@@ -1,0 +1,8 @@
+{
+  "base-model": "models/gb_model_weights.joblib",
+  "grid-search": {
+        "n_estimators": [220],
+        "max_depth": [4],
+        "learning_rate": [3e-2]
+  }
+}

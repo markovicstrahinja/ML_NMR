@@ -1,0 +1,9 @@
+{
+  "base-model": "models/svr_model_weights.joblib",
+  "grid-search": {
+        "gamma": ["scale"],
+        "epsilon": [1e-3],
+        "C": [25],
+        "kernel": ["rbf"]
+    }
+}
