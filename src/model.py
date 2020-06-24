@@ -4,12 +4,9 @@ from sklearn.model_selection import GridSearchCV
 
 
 class Model:
-    def __init__(self):
+    def __init__(self, model_path: str):
         self.model = None
         self.is_trained = False
-
-    def __init__(self, model_path: str):
-        self.__init__()
         self.load(model_path)
 
     def load(self, model_path):
@@ -28,13 +25,19 @@ class Model:
             raise ValueError("Model is not trained! Please call either 'fit' or 'load' methods first")
         return self.model.predict(X)
 
-    def grid_search(self, dataset, params_grid, cv=5, verbose=True):
-        gs_cv = GridSearchCV(estimator=self.model, param_grid=params_grid, cv=cv, refit=True, verbose=True)
+    def grid_search(self, dataset, params_grid, n_jobs=-1, cv=5, verbose=True):
+        gs_cv = GridSearchCV(
+            estimator=self.model, param_grid=params_grid, cv=cv,
+            refit=True, n_jobs=n_jobs, verbose=verbose, scoring='neg_mean_absolute_error'
+        )
         gs_cv = gs_cv.fit(dataset.X, dataset.y)
 
         self.model = gs_cv.best_estimator_
         self.is_trained = True
+
         return gs_cv
 
     def __str__(self):
         return str(self.model).split('(')[0]
+
+
