@@ -35,7 +35,7 @@ you have save your *model* via *joblib* library into *model_file_name*:
 3) Create JSON file params.json with path to the base model (see svr_params.json or gbrt_params.json for example):
     ```json
     { 
-       "base-model": model_file_name 
+       "base-model": "model_file_name" 
     }
     ```
 4) Run training script and save new trained model into data/new_trained_model.joblib:
