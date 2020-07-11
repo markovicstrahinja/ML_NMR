@@ -77,7 +77,7 @@ directly write to [strahinja.markovic@skolkovotech.ru](mailto:strahinja.markovic
 
 # Scoreboard
 
-| Model | RMSE (mPa·s) | MAE (mPa·s) | MSLE | MAPE (%) | Adj R^2 (%) |
+| Model | RMSE (mPa·s) | MAE (mPa·s) | MSLE | MAPE (%) | Adj R^2 |
 |-------|:------------:|:-----------:|:----:|:--------:|:-----------:|
 |Straley	|	28,910	|	9638	|	1.014	|	54	|	0.58|
 |Sandor	|	25,012	|	8066	|	0.831	|	50	|	0.83|
