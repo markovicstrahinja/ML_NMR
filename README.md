@@ -8,7 +8,7 @@ The python script for data-driven prediction of viscosity of liquid hydrocarbons
 
 Dataset is available in two formats:
 - Excel: download full dataset
-- CSV: download train (data/train_data.csv) and test data (data/train_data.csv)
+- CSV: download [train](https://raw.githubusercontent.com/markovicstrahinja/ML_NMR/master/data/train_data.csv) (data/train_data.csv) and [test](https://raw.githubusercontent.com/markovicstrahinja/ML_NMR/master/data/test_data.csv) data (data/train_data.csv)
 
 For the public dataset, we provide 282 samples with the following features:
  - T2LM (ms): T2-relaxation geometric mean
