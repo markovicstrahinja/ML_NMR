@@ -12,8 +12,6 @@
 #   -v, --verbose         Print verbose output.
 
 import argparse
-import joblib
-import json
 
 from src.data_manager import DataManager
 from src.model import Model

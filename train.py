@@ -1,13 +1,16 @@
-# usage: train.py [-h] [-d DATA_PATH] [-m MODEL_NAME] [-j PARAMS_JSON] [-g] [-l]
-#                 [-f] [-v]
+# usage: train.py [-h] [-d TRAIN_PATH] [-t TEST_PATH] [-m MODEL_NAME]
+#                 [-j PARAMS_JSON] [-g] [-l] [-f] [-n N_JOBS] [-v]
 #
 # optional arguments:
 #   -h, --help            show this help message and exit
-#   -d DATA_PATH, --data-path DATA_PATH
-#                         Name of input CSV data file.
+#   -d TRAIN_PATH, --train-path TRAIN_PATH
+#                         Name of input CSV data file for training.
+#   -t TEST_PATH, --test-path TEST_PATH
+#                         Name of input CSV data file for training.
 #   -m MODEL_NAME, --model-name MODEL_NAME
 #                         File name for weights saving. If None then
-#                         "models/{model_class}_weights.joblib" model name will be used.
+#                         "models/{model_class}_weights.joblib" model name will
+#                         be used.
 #   -j PARAMS_JSON, --params-json PARAMS_JSON
 #                         Path to JSON with model and training params. base-
 #                         model: path to joblib base model;grid-search: params
@@ -15,19 +18,22 @@
 #   -g, --grid-search     if yes then make a grid search over params in
 #                         --params-json file (for example, see field "grid-
 #                         search" in svm_params.json file)
-#   -l, --log-target      If yes then build prediction for log(Eta) instead if Eta.
+#   -l, --log-target      If yes then build prediction for log(Eta) instead if
+#                         Eta.
 #   -f, --feature-engineering
 #                         If yes then use feature engineering
+#   -n N_JOBS, --n-jobs N_JOBS
+#                         Number of parallel jobs in grid-search (if flag grid-
+#                         search is active)
 #   -v, --verbose         Print verbose output.
 
+
 import argparse
-import joblib
 import json
 
 
 from src.data_manager import DataManager
 from src.model import Model
-from src.utils import calc_metrics
 import test
 
 
@@ -64,30 +70,11 @@ def parse_args():
     return parser.parse_args()
 
 
-from sklearn.ensemble import GradientBoostingRegressor
-from sklearn.svm import SVR
 def train(model: Model, data: DataManager,  test_data: DataManager,
           output_model_name=None, grid_search_params=None, n_jobs=-1, verbose=True):
     if grid_search_params:
         if verbose: print('Start grid search..', end='')
-        for c in [1e-2, 1e-1, 1, 2, 5, 10]:
-            for coef0 in [0, 0.1, 0.5, 1.0]:
-                # for degree in [1, 2, 3, 4]:
-                    # for gamma in ["scale", 5e-4, 1e-3, 1e-1]:
-                        # for epsilon in [1e-4, 1e-3, 1e-2, 1e-0]:
-                for kernel in ['linear', 'poly', 'rbf', 'sigmoid']:
-                    model = SVR(
-                        C=c, cache_size=200, coef0=coef0, degree=3, epsilon=0.001, gamma='scale',
-                        kernel=kernel, max_iter=-1, shrinking=True, tol=0.001, verbose=False
-                    )
-                    model.fit(data.X, data.y)
-                    y_pred = model.predict(test_data.X)
-                    res = calc_metrics(test_data.y, y_pred, len(data.X_cols), log_target=data.log_target)
-                    res_num = calc_metrics(test_data.y, y_pred, len(data.X_cols), log_target=data.log_target, return_str=False)
-                    if res_num[-2] < 50 and res_num[0] < 10000:
-                        print(c, coef0, kernel, res)
-
-        # model.grid_search(data, grid_search_params, n_jobs, verbose=verbose)
+        model.grid_search(data, grid_search_params, n_jobs, verbose=verbose)
         if verbose: print('Grid search finished.')
     else:
         if verbose: print('Start training..', end='')
