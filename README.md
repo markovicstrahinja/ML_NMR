@@ -97,8 +97,7 @@ directly write to [strahinja.markovic@skolkovotech.ru](mailto:strahinja.markovic
 |GBRT-FE	|	7140	|	2742	|	**0.123**	|	**27**	|	0.93|
 
 Please write to [strahinja.markovic@skolkovotech.ru](mailto:strahinja.markovic@skolkovotech.ru) for posting algorithms to the scoreboard.
-
-TODO: SM please check the numbers for SVR, GBRT, SVR-FE and GBRT-FE  
+ 
 
 # Citation
 If you use this dataset or code please cite:
