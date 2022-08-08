@@ -11,7 +11,7 @@ Dataset is available in two formats:
 - CSV: download [train](https://raw.githubusercontent.com/markovicstrahinja/ML_NMR/master/data/train_data.csv) (data/train_data.csv) and [test](https://raw.githubusercontent.com/markovicstrahinja/ML_NMR/master/data/test_data.csv) data (data/train_data.csv)
 
 For the public dataset, we provide 282 samples with the following features:
- - T2LM (ms): T2-relaxation geometric mean
+ - T2LM (ms): T2-relaxation logarithmic mean
  - T (K): temperature of the oil sample 
  - TE (ms): echo-spacing
  - \[**Target**\] Eta (cP): viscosity
