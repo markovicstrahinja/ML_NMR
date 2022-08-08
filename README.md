@@ -101,5 +101,4 @@ Please write to [strahinja.markovic@skolkovotech.ru](mailto:strahinja.markovic@s
 
 # Citation
 If you use this dataset or code please cite:
-
-TODO: LINK TO THE ARTICLE BOTH IN APA AND BIBTEX FORMAT
+https://doi.org/10.1021/acs.energyfuels.0c02565
