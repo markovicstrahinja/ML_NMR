@@ -96,7 +96,7 @@ directly write to [strahinja.markovic@skolkovotech.ru](mailto:strahinja.markovic
 |SVR-FE	|	**5418**	|	**1671**	|	0.257	|	50	|	**0.96**|
 |GBRT-FE	|	7140	|	2742	|	**0.123**	|	**27**	|	0.93|
 
-Please write to [strahinja.markovic@skolkovotech.ru](mailto:strahinja.markovic@skolkovotech.ru) for posting algorithms to the scoreboard.
+Please write to [sth.markovic@gmail.com](mailto:sth.markovic@gmail.com) for posting algorithms to the scoreboard.
  
 
 # Citation
